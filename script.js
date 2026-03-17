@@ -672,10 +672,10 @@ class DefaultsDocGenerator {
         const navHtml = `
             <h2 class="toc__title">Contents</h2>
             <ul class="toc__list">
-                ${sectionsToShow.map(section => `
+                ${sectionsToShow.map((section, index) => `
                     <li class="toc__item">
                         <a href="#section-${this.slugify(section.name)}" class="toc__link">
-                            ${section.name} (${section.entries.length})
+                            ${index + 1}. ${section.name} (${section.entries.length})
                         </a>
                     </li>
                 `).join('')}
