@@ -290,6 +290,7 @@ class DefaultsDocGenerator {
         const searchInput = document.getElementById('searchInput');
         const clearSearch = document.getElementById('clearSearch');
         const resetSearch = document.getElementById('resetSearch');
+        const returnToTop = document.getElementById('returnToTop');
         
         searchInput.addEventListener('input', (e) => {
             this.handleSearch(e.target.value);
@@ -300,15 +301,44 @@ class DefaultsDocGenerator {
             this.handleSearch('');
         });
         
-        resetSearch.addEventListener('click', () => {
-            searchInput.value = '';
-            this.handleSearch('');
+        if (resetSearch) {
+            resetSearch.addEventListener('click', () => {
+                searchInput.value = '';
+                this.handleSearch('');
+            });
+        }
+        
+        // Return to top functionality
+        returnToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            const mainElement = document.getElementById('main');
+            mainElement.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
         
         // Copy functionality
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('copy-button') || e.target.closest('.copy-button')) {
                 this.handleCopy(e);
+            }
+        });
+        
+        // Smooth scrolling for TOC links
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('toc__link')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const mainElement = document.getElementById('main');
+                    const offsetTop = targetElement.offsetTop - 20; // Small offset
+                    mainElement.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     }
@@ -635,23 +665,21 @@ class DefaultsDocGenerator {
         const sectionsToShow = this.searchTerm ? this.filteredSections : this.sections;
         
         if (sectionsToShow.length === 0) {
-            nav.innerHTML = '<div class="container"><div class="nav__loading">No sections available</div></div>';
+            nav.innerHTML = '<h2 class="toc__title">Contents</h2><div class="toc__loading">No sections available</div>';
             return;
         }
         
         const navHtml = `
-            <div class="container">
-                <h2 class="nav__title">Contents</h2>
-                <ul class="nav__list">
-                    ${sectionsToShow.map(section => `
-                        <li class="nav__item">
-                            <a href="#section-${this.slugify(section.name)}" class="nav__link">
-                                ${section.name} (${section.entries.length})
-                            </a>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
+            <h2 class="toc__title">Contents</h2>
+            <ul class="toc__list">
+                ${sectionsToShow.map(section => `
+                    <li class="toc__item">
+                        <a href="#section-${this.slugify(section.name)}" class="toc__link">
+                            ${section.name} (${section.entries.length})
+                        </a>
+                    </li>
+                `).join('')}
+            </ul>
         `;
         
         nav.innerHTML = navHtml;

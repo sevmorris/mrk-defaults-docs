@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mrk defaults.sh Reference | macOS Configuration Guide</title>
+    <title>TO MRK-1 — mrk defaults.sh Reference Manual</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="header__title">mrk defaults.sh Reference</h1>
-            <p class="header__subtitle">macOS system preferences configured by the mrk bootstrap system</p>
-            <div class="header__meta">
-                <span class="badge">Technical Documentation</span>
-                <a href="https://github.com/sevmorris/mrk" class="badge badge--link">View mrk on GitHub</a>
+    <div class="layout">
+        <!-- Left Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <h1 class="sidebar__title">TO MRK-1</h1>
+                <p class="sidebar__subtitle">defaults.sh Reference Manual</p>
+                <div class="sidebar__meta">
+                    <span class="badge">Technical Manual</span>
+                    <a href="https://github.com/sevmorris/mrk" class="badge badge--link">mrk on GitHub</a>
+                </div>
             </div>
-        </div>
-    </header>
-
-    <nav class="nav" id="tableOfContents">
-        <div class="container">
-            <h2 class="nav__title">Contents</h2>
-            <div class="nav__loading">Loading sections...</div>
-        </div>
-    </nav>
-
-    <main class="main">
-        <div class="container">
-            <div class="search-section">
+            
+            <div class="sidebar__search">
                 <div class="search-box">
                     <input type="search" id="searchInput" placeholder="Search defaults..." class="search-input">
-                    <button id="clearSearch" class="search-clear" style="display: none;">Clear</button>
+                    <button id="clearSearch" class="search-clear" style="display: none;">×</button>
                 </div>
                 <div class="search-stats" id="searchStats"></div>
             </div>
 
+            <div class="sidebar__toc" id="tableOfContents">
+                <h2 class="toc__title">Contents</h2>
+                <div class="toc__loading">Loading sections...</div>
+            </div>
+
+            <div class="sidebar__footer">
+                <a href="#top" class="return-to-top" id="returnToTop">↑ Return to Top</a>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main" id="main">
+            <div id="top"></div>
             <div class="content" id="content">
                 <div class="loading">
                     <div class="loading__spinner"></div>
@@ -49,15 +54,13 @@
                 <h3>No results found</h3>
                 <p>Try adjusting your search terms or <button id="resetSearch" class="link-button">view all defaults</button></p>
             </div>
-        </div>
-    </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 <a href="https://github.com/sevmorris">Sev Morris</a> | Generated from <a href="https://github.com/sevmorris/mrk/blob/main/scripts/defaults.sh">defaults.sh</a></p>
-            <p class="footer__note">This documentation is automatically generated from the mrk bootstrap script.</p>
-        </div>
-    </footer>
+            <footer class="footer">
+                <p>&copy; 2026 <a href="https://github.com/sevmorris">Sev Morris</a> | Generated from <a href="https://github.com/sevmorris/mrk/blob/main/scripts/defaults.sh">defaults.sh</a></p>
+                <p class="footer__note">This documentation is automatically generated from the mrk bootstrap script.</p>
+            </footer>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
