@@ -365,7 +365,7 @@ body {
 }
 
 .default-entry__header {
-    background-color: var(--color-background-secondary);
+    background-color: #dce0e6;
     padding: var(--space-md) var(--space-lg);
     border-bottom: 1px solid var(--color-border);
 }
@@ -451,7 +451,7 @@ body {
 }
 
 .values-table th {
-    background-color: var(--color-background-tertiary);
+    background-color: #cdd2d8;
     font-weight: 600;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
