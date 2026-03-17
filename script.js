@@ -580,25 +580,34 @@ class DefaultsDocGenerator {
         return `
             <div class="default-entry">
                 <div class="default-entry__header">
-                    <div class="default-entry__status default-entry__status--${statusClass}">
-                        ${statusIcon}
-                    </div>
-                    <div class="default-entry__main">
-                        <h3 class="default-entry__title">${entry.comment}</h3>
-                        <code class="default-entry__domain-key">${entry.domain} ${entry.key}</code>
-                        <p class="default-entry__description">${entry.description}</p>
-                    </div>
+                    <h3 class="default-entry__title">
+                        <div class="default-entry__status default-entry__status--${statusClass}">
+                            ${statusIcon}
+                        </div>
+                        ${entry.comment}
+                    </h3>
+                    <code class="default-entry__domain-key">${entry.domain} ${entry.key}</code>
+                </div>
+                
+                <div class="default-entry__main">
+                    <p class="default-entry__description">${entry.description}</p>
                 </div>
                 
                 <div class="default-entry__values">
-                    <div class="value-display">
-                        <div class="value-display__label">Current Value</div>
-                        <div class="value-display__value value-display__value--empty">Unknown</div>
-                    </div>
-                    <div class="value-display">
-                        <div class="value-display__label">Desired Value</div>
-                        <div class="value-display__value">${entry.value}</div>
-                    </div>
+                    <table class="values-table">
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Current Value</th>
+                            <th>Desired Value</th>
+                        </tr>
+                        <tr>
+                            <td>${entry.key}</td>
+                            <td>${entry.type}</td>
+                            <td class="value--empty">Unknown</td>
+                            <td>${entry.value}</td>
+                        </tr>
+                    </table>
                 </div>
                 
                 <div class="default-entry__command">
